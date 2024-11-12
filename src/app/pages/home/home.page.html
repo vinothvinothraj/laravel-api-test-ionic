@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Available Gift Cards</ion-card-title>
+      <ion-card-subtitle>Some Description</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let giftCard of giftCards" [routerLink]="['/gift', giftCard.id]" routerDirection="forward">
+          <ion-thumbnail slot="start">
+            <img [src]="baseUrl + '/storage/' + giftCard.image_url" alt="{{ giftCard.title }}" />
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ giftCard.title }}</h2>
+            <p>{{ giftCard.description }}</p>
+            <p>{{ giftCard.start_date }}</p>
+            <p>{{ giftCard.end_date }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
