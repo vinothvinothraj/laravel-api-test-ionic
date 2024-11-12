@@ -1,0 +1,7 @@
+{
+  "name": "gift-card-laravel-api",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
