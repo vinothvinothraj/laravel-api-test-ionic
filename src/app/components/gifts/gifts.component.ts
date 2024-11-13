@@ -33,4 +33,26 @@ export class GiftsComponent implements OnInit {
     }
   }
 
+  downloadPDF() {
+    const giftCardId = this.route.snapshot.paramMap.get('id');
+  
+    if (giftCardId) {
+      this.giftcardsService.generateGiftCardPDF(giftCardId).subscribe(
+        (blob) => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `${this.giftCard.title}.pdf`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+        },
+        (error) => {
+          console.error('Error generating PDF:', error);
+        }
+      );
+    }
+  }
+
 }
