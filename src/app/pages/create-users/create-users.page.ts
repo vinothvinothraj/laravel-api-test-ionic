@@ -10,27 +10,27 @@ import { ToastController } from '@ionic/angular';
 })
 export class CreateUsersPage implements OnInit {
 
-  taskForm: FormGroup;
+  userForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private toastController: ToastController
   ) {
-    this.taskForm = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       name: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(1)]]
     });
   }
 
   async onCreate() {
-    if (this.taskForm.valid) {
-      const newTask: Task = this.taskForm.value;
+    if (this.userForm.valid) {
+      const newUser: User = this.userForm.value;
 
-      this.userService.createTask(newTask).subscribe(
+      this.userService.createUser(newUser).subscribe(
         async (response) => {
           console.log('User created successfully:', response);
-          this.taskForm.reset();
+          this.userForm.reset();
 
           // Show success toast
           const toast = await this.toastController.create({

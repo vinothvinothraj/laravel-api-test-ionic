@@ -7,7 +7,8 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class GiftcardsService {
-
+  
+  private baseUrl = environment.baseUrl;
   private apiUrl = `${environment.baseUrl}/api/gift-cards`; 
 
   constructor(private http: HttpClient) {}
@@ -18,5 +19,11 @@ export class GiftcardsService {
 
   getGiftCardById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  generateGiftCardPDF(id: string) {
+    return this.http.get(`${this.baseUrl}/api/generate-giftcard-pdf/${id}`, {
+      responseType: 'blob',  
+    });
   }
 }

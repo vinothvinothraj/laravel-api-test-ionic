@@ -18,14 +18,14 @@ export class UserService {
   private apiUrl = `${environment.baseUrl}/api/create-task`; 
   constructor(private http: HttpClient) { }
 
-  // Method to create a new task
-  createTask(task: Task): Observable<any> {
+  // Method to create a new user
+  createUser(user: User): Observable<any> {
     // Set the headers
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
     // Send POST request to the API
-    return this.http.post<any>(this.apiUrl, task, { headers });
+    return this.http.post<any>(this.apiUrl, user, { headers });
   }
 }
