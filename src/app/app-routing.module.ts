@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'gift/:id',  
     component: GiftsComponent
+  },  {
+    path: 'create-users',
+    loadChildren: () => import('./pages/create-users/create-users.module').then( m => m.CreateUsersPageModule)
   }
+
 
 ];
 @NgModule({
