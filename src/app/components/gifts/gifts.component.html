@@ -1,20 +1,25 @@
 <ion-header *ngIf="giftCard">
   <ion-toolbar>
-    <ion-title>{{ giftCard?.title }}</ion-title>  
+    <ion-title>Gift Card</ion-title>  
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-card *ngIf="giftCard">
+<ion-content class="ion-justify-content-center" [fullscreen]="true">
+  <ion-card *ngIf="giftCard" class="ion-justify-content-center">
     <ion-card-header>
-      <ion-card-title>{{ giftCard?.title }}</ion-card-title>
-      <ion-card-subtitle>{{ giftCard?.description }}</ion-card-subtitle>
+      
+      <ion-card-subtitle class="ion-text-center">{{ giftCard?.description }}</ion-card-subtitle>
+      <ion-card-title class="ion-text-center">{{ giftCard?.title }}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      <img [src]="baseUrl + '/storage/' + giftCard?.image_url" alt="{{ giftCard?.title }}" />
+    <ion-card-content class="ion-justify-content-center">
+      <img [src]="baseUrl + '/storage/' + giftCard?.image_url" alt="{{ giftCard?.title }}" class="card-image" />
       <p><strong>Start Date:</strong> {{ giftCard?.start_date }}</p>
       <p><strong>End Date:</strong> {{ giftCard?.end_date }}</p>
-      <ion-button (click)="downloadPDF()">Download as PDF</ion-button>
+      <ion-button expand="block" (click)="downloadPDF()">
+        <ion-icon slot="start" name="download-outline"></ion-icon>
+        Download as PDF
+      </ion-button>
+      
     </ion-card-content>
   </ion-card>
 </ion-content>
